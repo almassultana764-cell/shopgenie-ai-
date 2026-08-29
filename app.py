@@ -1,1 +1,92 @@
-app.py
+import streamlit as st
+
+st.set_page_config(
+    page_title="ShopGenie AI",
+    page_icon="🛒"
+)
+
+st.title("🛒 ShopGenie AI")
+st.write("Your intelligent shopping assistant")
+
+st.subheader("👕 Find Your Perfect T-Shirt")
+
+query = st.text_input(
+    "What kind of T-shirt do you want?",
+    placeholder="Example: black oversized T-shirt"
+)
+
+color = st.selectbox(
+    "Choose a color",
+    ["Black", "White", "Blue", "Red", "Green"]
+)
+
+style = st.selectbox(
+    "Choose a style",
+    ["Oversized", "Regular", "Printed", "Plain"]
+)
+
+budget = st.number_input(
+    "Maximum budget (₹)",
+    min_value=100,
+    max_value=5000,
+    value=800,
+    step=100
+)
+
+if st.button("✨ Find T-Shirts"):
+
+    products = [
+        {
+            "name": "Black Oversized T-Shirt",
+            "price": 699,
+            "color": "Black",
+            "style": "Oversized"
+        },
+        {
+            "name": "White Plain T-Shirt",
+            "price": 499,
+            "color": "White",
+            "style": "Plain"
+        },
+        {
+            "name": "Blue Printed T-Shirt",
+            "price": 599,
+            "color": "Blue",
+            "style": "Printed"
+        },
+        {
+            "name": "Red Regular T-Shirt",
+            "price": 649,
+            "color": "Red",
+            "style": "Regular"
+        },
+        {
+            "name": "Black Printed T-Shirt",
+            "price": 799,
+            "color": "Black",
+            "style": "Printed"
+        }
+    ]
+
+    matching_products = [
+        product for product in products
+        if product["price"] <= budget
+        and product["color"] == color
+        and product["style"] == style
+    ]
+
+    st.subheader("✨ Your Recommendations")
+
+    if matching_products:
+
+        for product in matching_products:
+            st.write("---")
+            st.write(f"### 👕 {product['name']}")
+            st.write(f"💰 Price: ₹{product['price']}")
+            st.write(f"🎨 Color: {product['color']}")
+            st.write(f"👚 Style: {product['style']}")
+
+    else:
+        st.warning(
+            "No exact match found. Try changing your color, style, or budget."
+        )app.py
