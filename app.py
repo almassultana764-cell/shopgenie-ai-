@@ -37,11 +37,10 @@ if st.button("✨ Find T-Shirts"):
 
     products = [
         {
-         "name": "Black Oversized T-Shirt",                 
-         "price": 699,
-         "color": "Black",
-         "style": "Oversized",
-         "url":             "https://example.com/black-oversized-tshirt"
+            "name": "Black Oversized T-Shirt",
+            "price": 699,
+            "color": "Black",
+            "style": "Oversized"
         },
         {
             "name": "White Plain T-Shirt",
